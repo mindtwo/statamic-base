@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace mindtwo\StatamicBase\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class StatamicBaseInstallCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'statamic-base:install';
 
     public $description = 'My command';
 
