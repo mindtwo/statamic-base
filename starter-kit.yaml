@@ -1,0 +1,39 @@
+export_paths:
+  - .claude
+  - .env.example
+  - .junie
+  - CLAUDE.md
+  - Envoy.blade.php
+  - Envoy.config.php
+  - app/DataTransferObjects
+  - app/View/Components
+  - config/captcha.php
+  - config/statamic/eloquent-driver.php
+  - content
+  - database/sync.sql
+  - lang
+  - package.json
+  - public/favicon.ico
+  - public/fonts
+  - public/robots.txt
+  - resources/blueprints
+  - resources/css
+  - resources/fieldsets
+  - resources/js
+  - resources/sites.yaml
+  - resources/views
+  - vite.config.js
+dependencies:
+  aryehraber/statamic-captcha: ^1.14
+  mindtwo/statamic-base: ^0.1.2
+  spatie/laravel-data: ^4.17
+  statamic/cms: ^5.0
+  statamic/eloquent-driver: ^4.30
+dependencies_dev:
+  laravel/boost: ^1.1
+  laravel/envoy: ^2.10
+modules:
+  sentry:
+    prompt: 'Do you want to include Sentry error tracking?'
+    dependencies:
+      sentry/sentry-laravel: ^4.15

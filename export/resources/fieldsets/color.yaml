@@ -1,0 +1,12 @@
+title: Color
+fields:
+  -
+    handle: background_color
+    field:
+      swatches:
+        - '#000'
+        - '#de0639'
+      allow_any: false
+      type: color
+      display: 'Background color'
+      localizable: false

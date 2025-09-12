@@ -1,0 +1,17 @@
+title: Bild
+fields:
+  -
+    handle: image
+    field:
+      max_files: 1
+      container: uploads
+      type: assets
+      display: Bild
+      localizable: true
+  -
+    handle: lazy_loading
+    field:
+      type: toggle
+      display: 'Lazy loading aktivieren?'
+      localizable: true
+      default: true

@@ -1,0 +1,21 @@
+title: Pages
+sites:
+  - en
+  - de
+  - nl
+propagate: false
+template: default
+layout: components/layouts/main
+revisions: false
+title_format: '{{ title }}'
+route: '{parent_uri}/{slug}'
+sort_dir: asc
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
+structure:
+  root: true
+  max_depth: 2
+  slugs: true

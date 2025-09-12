@@ -1,0 +1,46 @@
+title: Page
+tabs:
+  main:
+    display: Hauptteil
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: false
+              display: Title
+              localizable: true
+              validate:
+                - required
+          -
+            import: content_builder
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
+  neuer_tab:
+    display: SEO
+    sections:
+      -
+        display: 'Neuer Abschnitt'
+        fields:
+          -
+            import: meta_fields

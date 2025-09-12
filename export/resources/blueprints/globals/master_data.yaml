@@ -1,0 +1,45 @@
+tabs:
+  main:
+    display: Hauptteil
+    sections:
+      -
+        fields:
+          -
+            handle: company_name
+            field:
+              type: text
+              display: 'Company name'
+          -
+            handle: street_nr
+            field:
+              type: text
+              display: Street
+          -
+            handle: postal_code
+            field:
+              type: text
+              display: 'Postal code'
+              width: 33
+          -
+            handle: city
+            field:
+              type: text
+              display: City
+              width: 66
+          -
+            handle: country
+            field:
+              type: text
+              display: Country
+          -
+            handle: phone
+            field:
+              input_type: tel
+              type: text
+              display: Phone
+          -
+            handle: email
+            field:
+              input_type: email
+              type: text
+              display: Email

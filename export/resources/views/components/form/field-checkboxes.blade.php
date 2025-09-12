@@ -1,0 +1,68 @@
+@props(['field'])
+
+@php
+    $isRequired = in_array('required', $field['validate'] ?? []);
+    $values = old($field['handle'], $field['default'] ?? []);
+    $fieldId = $field['id'] ?? $field['handle'];
+    $isInline = !empty($field['inline']);
+@endphp
+
+@if(($field['visibility'] ?? 'visible') !== 'hidden')
+    <x-form.field-wrapper :field="$field">
+        <fieldset>
+            <legend class="mb-2 {{ isset($field['hide_display']) ? 'sr-only' : 'block' }}">
+                {{ __($field['display']) }}@if($isRequired)*@endif
+            </legend>
+
+            @if(!empty($field['instructions']) && ($field['instructions_position'] ?? 'below') === 'above')
+                <p class="text-sm text-current mb-1">
+                    {{ $field['instructions'] }}
+                </p>
+            @endif
+
+            <div
+                class="{{ $isInline ? 'flex flex-wrap gap-4' : 'space-y-2' }}"
+                role="group"
+                aria-labelledby="{{ $fieldId }}-legend"
+                :aria-invalid="fieldError ? 'true' : 'false'"
+                :aria-describedby="fieldError ? '{{ $fieldId }}-error' : '{{ $fieldId }}-instructions'"
+            >
+                @foreach($field['options'] ?? [] as $value => $label)
+                    <div class="flex gap-2 items-center">
+                        <input
+                            type="checkbox"
+                            id="{{ $fieldId }}_{{ $loop->index }}"
+                            name="{{ $field['handle'] }}[]"
+                            value="{{ $value }}"
+                            class="form-checkbox h-6 w-6 border-black focus:ring-2 focus:ring-primary-dark focus:ring-offset-2 focus:border-primary-dark"
+                            :class="{ 'border-red-500': fieldError }"
+                            {{ in_array($value, (array)$values) ? 'checked' : '' }}
+                            @if($isRequired) required @endif
+                            @if(!empty($field['readonly'])) readonly @endif
+                            :aria-invalid="fieldError ? 'true' : 'false'"
+                            :aria-describedby="fieldError ? '{{ $fieldId }}-error' : '{{ $fieldId }}-instructions'"
+                        >
+                        <label for="{{ $fieldId }}_{{ $loop->index }}" class="text-sm">
+                            {{ __($label) }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+
+            <p
+                x-show="fieldError"
+                x-text="fieldError"
+                x-cloak
+                class="text-red-500 text-sm mt-1"
+                id="{{ $fieldId }}-error"
+                role="alert"
+            ></p>
+
+            @if(!empty($field['instructions']) && ($field['instructions_position'] ?? 'below') !== 'above')
+                <p class="text-sm text-current mt-1">
+                    {{ $field['instructions'] }}
+                </p>
+            @endif
+        </fieldset>
+    </x-form.field-wrapper>
+@endif

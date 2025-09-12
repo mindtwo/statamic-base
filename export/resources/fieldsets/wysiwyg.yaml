@@ -1,0 +1,29 @@
+title: Wysiwyg
+fields:
+  -
+    handle: wysiwyg
+    field:
+      buttons:
+        - h2
+        - h3
+        - h4
+        - bold
+        - italic
+        - underline
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+        - anchor
+        - table
+        - horizontalrule
+        - alignleft
+        - aligncenter
+        - alignright
+      remove_empty_nodes: true
+      link_noopener: true
+      type: bard
+      display: Wysiwyg
+      localizable: false
+      smart_typography: true
+      word_count: true

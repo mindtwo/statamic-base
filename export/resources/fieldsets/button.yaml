@@ -1,0 +1,21 @@
+title: Button
+fields:
+  -
+    handle: button_link
+    field:
+      collections:
+        - pages
+        - references
+        - news
+        - jobs
+      type: link
+      display: Link
+      localizable: true
+      width: 50
+  -
+    handle: button_label
+    field:
+      type: text
+      display: Beschriftung
+      localizable: true
+      width: 50

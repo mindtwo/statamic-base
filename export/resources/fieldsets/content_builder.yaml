@@ -1,0 +1,64 @@
+title: 'Content Builder'
+fields:
+  -
+    handle: blocks
+    field:
+      button_label: 'Add block'
+      type: replicator
+      display: 'Content Builder'
+      instructions: 'Use the following blocks to create your individual page structure. Each block can be sorted by dragging and dropping.'
+      localizable: true
+      sets:
+        basic_blocks:
+          display: Default
+          sets:
+            text:
+              display: Text
+              instructions: 'One or two-column content'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  import: color
+            text_image:
+              display: 'Text & Bild'
+              instructions: 'Combination of image and text'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  import: image
+                -
+                  handle: reverse_order
+                  field:
+                    type: toggle
+                    display: 'Reverse order?'
+                    localizable: false
+                    width: 50
+                -
+                  handle: center_content_vertically
+                  field:
+                    type: toggle
+                    display: 'Center content vertically?'
+                    localizable: false
+                    width: 50
+        special_blocks:
+          display: Special
+          sets:
+            form:
+              display: Form
+              instructions: 'Select and embed a form'
+              fields:
+                -
+                  import: heading
+                -
+                  handle: form
+                  field:
+                    max_items: 1
+                    type: form
+                    display: Form
+                    localizable: false

@@ -1,0 +1,83 @@
+title: 'Meta Fields'
+fields:
+  -
+    handle: page_title
+    field:
+      type: text
+      display: 'Page Title'
+      instructions: 'The meta title appears in search results and in the browser tab. Keep it short and concise – maximum 60 characters or 580 pixels. Relevant keywords improve findability.'
+      antlers: true
+      localizable: true
+  -
+    handle: meta_description
+    field:
+      type: textarea
+      display: 'Meta Description'
+      instructions: 'The meta description appears below the meta title in search results. It should briefly summarize the page content and encourage clicking. Maximum 155 characters or 920 pixels. Relevant keywords improve findability.'
+      localizable: true
+  -
+    handle: meta_robots
+    field:
+      type: select
+      default: 'index, follow'
+      display: 'Meta Robots'
+      options:
+        -
+          key: 'index,follow'
+          value: 'index, follow'
+        -
+          key: 'index,nofollow'
+          value: 'index, nofollow'
+        -
+          key: 'noindex,follow'
+          value: 'noindex, follow'
+        -
+          key: 'noindex,nofollow'
+          value: 'noindex, nofollow'
+      searchable: false
+      instructions: 'Controls crawling and indexing of the page by search engines. Common values: index, noindex, follow, nofollow.'
+      localizable: true
+  -
+    handle: meta_canonical
+    field:
+      type: text
+      display: 'Meta Canonical'
+      instructions: 'Specifies the preferred URL to avoid duplicate content. If empty, the current page URL is used by default.'
+      localizable: true
+  -
+    handle: spacer_feld
+    field:
+      type: spacer
+      display: 'Spacer Field'
+      localizable: false
+  -
+    handle: og_title
+    field:
+      type: text
+      display: 'OG Title'
+      instructions: 'The Open Graph title is used when sharing the page on social networks. It should be appealing and reflect the page content.'
+      antlers: true
+      localizable: true
+  -
+    handle: og_description
+    field:
+      type: textarea
+      display: 'OG Description'
+      instructions: 'The Open Graph description is displayed when sharing the page on social networks. It should be short and appealing.'
+      localizable: true
+  -
+    handle: og_image
+    field:
+      type: assets
+      container: uploads
+      display: 'OG Image'
+      instructions: 'The image used when sharing via Open Graph. Recommended size: at least 1200x630 pixels.'
+      max_files: 1
+      localizable: true
+  -
+    handle: og_url
+    field:
+      type: text
+      display: 'OG URL'
+      instructions: 'The canonical URL for Open Graph sharing. If empty, the current page URL is used.'
+      localizable: true

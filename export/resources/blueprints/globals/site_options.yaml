@@ -1,0 +1,53 @@
+tabs:
+  page_mapping:
+    display: 'Linking pages'
+    sections:
+      -
+        fields:
+          -
+            handle: page_for_news
+            field:
+              max_items: 1
+              collections:
+                - pages
+              type: entries
+              display: 'Page for News'
+              localizable: false
+          -
+            handle: page_for_contact
+            field:
+              max_items: 1
+              collections:
+                - pages
+              type: entries
+              display: 'Page for Contact'
+              localizable: false
+  social_media:
+    display: 'Social Media'
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: profiles
+            field:
+              type: grid
+              display: 'Link Profiles'
+              instructions: 'Please link the desired social media profile here. A corresponding icon will be displayed automatically.'
+              localizable: false
+              fields:
+                -
+                  handle: platform
+                  field:
+                    options:
+                      -
+                        key: linkedin
+                        value: Linkedin
+                    type: select
+                    display: Platform
+                -
+                  handle: url
+                  field:
+                    input_type: url
+                    type: text
+                    display: URL
