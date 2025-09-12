@@ -4,30 +4,40 @@ export_paths:
   - Envoy.config.php
   - app/DataTransferObjects
   - app/View/Components
-  - config/statamic/eloquent-driver.php
   - content
-  - database/sync.sql
   - lang
   - package.json
   - public/favicon.ico
   - public/fonts
   - public/robots.txt
-  - resources/blueprints
-  - resources/css
-  - resources/fieldsets
-  - resources/js
-  - resources/sites.yaml
-  - resources/views
+  - resources
   - vite.config.js
+  - README.md
+  - LICENSE.md
+  - .gitignore
 dependencies:
   mindtwo/statamic-base: ^0.1.2
   spatie/laravel-data: ^4.17
   statamic/cms: ^5.0
-  statamic/eloquent-driver: ^4.30
 dependencies_dev:
   laravel/boost: ^1.1
   laravel/envoy: ^2.10
 modules:
+  storage:
+    prompt: 'What kind of content and data storage you choosed during Statamic installation prompt previously?'
+    options:
+      database:
+        label: 'Database'
+        dependencies:
+          statamic/eloquent-driver: ^4.30
+        export_paths:
+          - config/statamic/eloquent-driver.php
+          - config/auth.php
+          - config/statamic/users.php
+          - app/Models/User.php
+      file:
+        label: 'Flat Files'
+        default: true
   captcha:
     prompt: 'Do you want to include CAPTCHA (e.g. Turnstile) protection for forms?'
     dependencies:
