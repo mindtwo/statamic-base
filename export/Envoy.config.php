@@ -47,16 +47,16 @@ $env = isset($env) ? $env : 'staging';
  */
 $db_replacements = [
     'local' => [
-        'http://{{DOMAIN}}.test',
-        '{{DOMAIN}}.test',
+        'http://{{ DOMAIN }}',
+        '{{ DOMAIN }}',
     ],
     'staging' => [
-        'https://{{DOMAIN}}.mindtwo.dev',
-        '{{DOMAIN}}.mindtwo.dev',
+        'https://{{ DOMAIN }}',
+        '{{ DOMAIN }}',
     ],
     'production' => [
-        'https://{{DOMAIN}}.com',
-        '{{DOMAIN}}.com',
+        'https://{{ DOMAIN }}',
+        '{{ DOMAIN }}',
     ],
 ];
 

@@ -8,13 +8,13 @@ class StarterKitPostInstall
     public function handle($console)
     {
         $this->console = $console;
-        
+
         // Step 1: Handle replacements
         $this->handleReplacements();
-        
+
         // Step 2: Additional setup tasks
         $this->runAdditionalTasks();
-        
+
         // Step 3: Show completion message
         $this->showCompletionMessage();
     }
@@ -30,7 +30,7 @@ class StarterKitPostInstall
         // Collect domain replacement
         $domain = $this->console->ask('What is your project domain? (e.g., example.com without protocol)');
         if ($domain) {
-            $this->replacements['{{DOMAIN}}'] = $domain;
+            $this->replacements['{{ DOMAIN }}'] = $domain;
         }
 
         // Add more replacements here as needed
@@ -75,10 +75,28 @@ class StarterKitPostInstall
 
     private function runAdditionalTasks()
     {
+        $this->cleanupDefaultTemplates();
+
         // Future: Additional setup tasks can go here
         // $this->setupDatabase();
         // $this->configureServices();
         // $this->optimizeFiles();
+    }
+
+    private function cleanupDefaultTemplates()
+    {
+        $defaultTemplates = [
+            'resources/views/default.antlers.html',
+            'resources/views/home.antlers.html',
+            'resources/views/layout.antlers.html',
+        ];
+
+        foreach ($defaultTemplates as $template) {
+            if (file_exists($template)) {
+                unlink($template);
+                $this->console->line("✓ Removed default template: {$template}");
+            }
+        }
     }
 
     private function showCompletionMessage()
@@ -88,7 +106,7 @@ class StarterKitPostInstall
         $this->console->line('');
         $this->console->line('Next steps:');
         $this->console->line('1. Configure your .env file with database credentials');
-        
+
         if ($this->hasEloquentDriver()) {
             $this->console->line('2. Run: <comment>php artisan migrate</comment>');
             $this->console->line('3. Run: <comment>php artisan statamic:eloquent:import-all</comment>');
@@ -98,7 +116,7 @@ class StarterKitPostInstall
             $this->console->line('2. Install frontend dependencies: <comment>npm install</comment>');
             $this->console->line('3. Create admin user: <comment>php artisan statamic:user:create</comment>');
         }
-        
+
         $this->console->line('6. Start development: <comment>npm run dev</comment>');
         $this->console->line('');
         $this->console->line('Happy coding! 🚀');
