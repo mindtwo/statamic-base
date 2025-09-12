@@ -53,53 +53,15 @@
         <meta property="og:site_name" content="{{ $metadata->og_site_name }}">
     @endif
 
-
-    <link rel="preload" href="/fonts/OpenSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/OpenSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/OpenSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
-
-    <link rel="preload" href="/fonts/RecklessNeue-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/RecklessNeue-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/RoobertVF.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
         @font-face {
-            font-family: "OpenSans";
-            src: url("/fonts/OpenSans-Regular.woff2") format("woff2");
-            font-weight: 400;
-            font-style: normal;
+            font-family: "Roobert";
+            src: url("/fonts/RoobertVF.woff2") format("woff2");
             font-display: swap;
-        }
-
-        @font-face {
-            font-family: "OpenSans";
-            src: url("/fonts/OpenSans-SemiBold.woff2") format("woff2");
-            font-weight: 600;
+            font-weight: 400 700;
             font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "OpenSans";
-            src: url("/fonts/OpenSans-Bold.woff2") format("woff2");
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "RecklessNeue";
-            src: url("/fonts/RecklessNeue-Regular.woff2") format("woff2");
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "RecklessNeue";
-            src: url("/fonts/RecklessNeue-Medium.woff2") format("woff2");
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
         }
     </style>
 
