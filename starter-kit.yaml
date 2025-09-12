@@ -1,8 +1,5 @@
 export_paths:
-  - .claude
   - .env.example
-  - .junie
-  - CLAUDE.md
   - Envoy.blade.php
   - Envoy.config.php
   - app/DataTransferObjects
