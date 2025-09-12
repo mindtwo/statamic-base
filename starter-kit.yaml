@@ -24,7 +24,7 @@ dependencies_dev:
   laravel/envoy: ^2.10
 modules:
   storage:
-    prompt: 'What kind of content and data storage do you want to use?'
+    prompt: 'What kind of content and data storage you choosed during Statamic installation prompt previously?'
     skip_option: false
     default: file
     options:
