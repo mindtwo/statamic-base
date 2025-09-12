@@ -16,8 +16,6 @@ php please starter-kit:install mindtwo/statamic-base
 
 ### Backend Features
 - **Dashboard Widgets**: Customized dashboard with helpful widgets
-- **Commands**: Useful Artisan commands for development
-- **Base Components**: Reusable PHP classes and utilities
 
 ### Frontend Stack
 - **Tailwind CSS 4** with @tailwindcss/forms and @tailwindcss/typography
@@ -53,7 +51,7 @@ The starter kit includes:
 
 ### Database-First Architecture
 
-This starter kit is prepared to use Statamic's **Eloquent Driver** for database storage instead of the traditional flat-file approach. While database usage is optional, it provides better performance, easier backups, and improved scalability for production environments when enabled.
+This starter kit is prepared to use Statamic's **[Eloquent Driver](https://github.com/statamic/eloquent-driver)** for database storage instead of the traditional flat-file approach. While database usage is optional, it provides better performance, easier backups, and improved scalability for production environments when enabled.
 
 **Stored in Database:**
 - Collection entries (pages, articles, etc.)
@@ -62,9 +60,9 @@ This starter kit is prepared to use Statamic's **Eloquent Driver** for database 
 - Global content
 - Navigation trees
 - Taxonomy terms
+- User accounts and roles
 
 **Stored as Files:**
-- User accounts and permissions
 - Content blueprints and fieldsets
 - Site configuration files
 - Templates and views
@@ -84,7 +82,7 @@ This starter kit is prepared to use Statamic's **Eloquent Driver** for database 
 
 ### 1. Database Configuration (Optional but Recommended)
 
-This starter kit supports **Eloquent Driver** for database storage instead of flat files. For optimal performance, configure your database:
+This starter kit supports **[Eloquent Driver](https://github.com/statamic/eloquent-driver)** for database storage instead of flat files. For optimal performance, configure your database:
 
 ```bash
 # Copy environment file
@@ -118,6 +116,18 @@ php artisan migrate
 
 # Import starter content to database
 php artisan statamic:eloquent:import-all
+```
+
+### 2.1. User Database Storage (Optional)
+
+To store users in the database instead of files, follow the [Statamic guide for storing users in a database](https://statamic.dev/tips/storing-users-in-a-database). The necessary configuration files are already included in the `export/` directory.
+
+```bash
+# Additional migration for user storage
+php artisan migrate
+
+# Import user configuration
+# Files in export/ directory will be automatically processed
 ```
 
 ### 3. Frontend Setup

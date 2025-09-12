@@ -3,11 +3,6 @@ en:
   url: /
   locale: en_GB
   lang: en
-nl:
-  name: Nederlands
-  url: /nl
-  locale: nl_NL
-  lang: nl
 de:
   name: Deutsch
   url: /de/
