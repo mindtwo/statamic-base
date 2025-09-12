@@ -29,9 +29,9 @@ $servers = [
     'staging' => [
         'append_conf' => true,
         'username' => 'forge',
-        'host' => '91.98.44.131',
+        'host' => '',
         'port' => 22,
-        'path_root' => '/home/forge/sunhorse.mindtwo.dev/',
+        'path_root' => '',
     ],
 ];
 
@@ -47,16 +47,16 @@ $env = isset($env) ? $env : 'staging';
  */
 $db_replacements = [
     'local' => [
-        'http://sunhorse.test',
-        'sunhorse.test',
+        'http://{{DOMAIN}}.test',
+        '{{DOMAIN}}.test',
     ],
     'staging' => [
-        'https://sunhorse.mindtwo.dev',
-        'sunhorse.mindtwo.dev',
+        'https://{{DOMAIN}}.mindtwo.dev',
+        '{{DOMAIN}}.mindtwo.dev',
     ],
     'production' => [
-        'https://sunhorse.net',
-        'sunhorse.net',
+        'https://{{DOMAIN}}.com',
+        '{{DOMAIN}}.com',
     ],
 ];
 

@@ -32,7 +32,6 @@ However, you will need to make sure your server or environment meets the followi
 This project supports three languages:
 - **English (Default)**: Primary language, available at root domain
 - **German**: Available at `/de/` path
-- **Dutch**: Available at `/nl/` path
 
 ## How To Install
 This project utilizes [Composer](https://getcomposer.org/) & [NPM](https://www.npmjs.com/) to manage its dependencies. So, before using this project, make sure you have Composer & NPM installed on your machine or server.

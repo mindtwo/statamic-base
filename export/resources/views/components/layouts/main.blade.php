@@ -23,7 +23,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $metadata->page_title ?? $title }} ‹ Sunhorse Trading</title>
+    <title>{{ $metadata->page_title ?? $title }} ‹ {{ config('app.name') }}</title>
 
     @if (!empty($metadata->meta_robots ?? $robots))
         <meta name="robots" content="{{ $metadata->meta_robots ?? $robots }}">

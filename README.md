@@ -95,11 +95,6 @@ DB_DATABASE=your_database
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 
-# Statamic Configuration
-STATAMIC_LICENSE_KEY=your_license_key
-STATAMIC_STACHE_WATCHER=true
-STATAMIC_STATIC_CACHING_STRATEGY=null
-
 # Optional: Captcha (Turnstile)
 CAPTCHA_SITEKEY=your_turnstile_sitekey
 CAPTCHA_SECRET=your_turnstile_secret
