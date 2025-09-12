@@ -24,7 +24,6 @@ export_paths:
   - resources/views
   - vite.config.js
 dependencies:
-  aryehraber/statamic-captcha: ^1.14
   mindtwo/statamic-base: ^0.1.2
   spatie/laravel-data: ^4.17
   statamic/cms: ^5.0
@@ -33,6 +32,10 @@ dependencies_dev:
   laravel/boost: ^1.1
   laravel/envoy: ^2.10
 modules:
+  captcha:
+    prompt: 'Do you want to include CAPTCHA (e.g. Turnstile) protection for forms?'
+    dependencies:
+      aryehraber/statamic-captcha: ^1.14
   sentry:
     prompt: 'Do you want to include Sentry error tracking?'
     dependencies:

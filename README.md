@@ -18,31 +18,30 @@ php please starter-kit:install mindtwo/statamic-base
 - **Dashboard Widgets**: Customized dashboard with helpful widgets
 
 ### Frontend Stack
-- **Tailwind CSS 4** with @tailwindcss/forms and @tailwindcss/typography
+- **Tailwind CSS 4** with [@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms) and [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
 - **Alpine.js 3** for interactive components  
 - **Vite 7** for modern asset building
-- **Complete form system** with validation and responsive design
 
 ### Content Management
-- **Eloquent Driver**: Database storage for better performance
+- **Eloquent Driver**: Database storage for better workflows, performance and more stable deployments
 - **Multilingual Setup**: German/English with proper SEO
 - **Content Structure**: Pre-configured collections and blueprints
+- **Global fields setup**: Centralized field management
 - **Navigation**: Dynamic menus and navigation trees
-- **Forms**: Ready-to-use contact forms with CAPTCHA (Cloudflare Turnstile) support
-- **Form Components**: Text, textarea, select, checkboxes, radio, toggle, files
+- **Forms**: Ready-to-use contact forms with optional CAPTCHA (Cloudflare Turnstile) support
 
 ## Dependencies
 
 ### Automatically Installed
 - `statamic/cms` - Statamic CMS core
 - `statamic/eloquent-driver` - Database storage
-- `aryehraber/statamic-captcha` - Form protection
 - `spatie/laravel-data` - Data Transfer Objects
 - `laravel/envoy` - Deployment automation
 - `laravel/boost` - Development tools
 - `mindtwo/statamic-base` - This package (widgets & utilities)
 
 ### Optional
+- `aryehraber/statamic-captcha` - Form protection ([documentation](https://github.com/aryehraber/statamic-captcha))
 - `sentry/sentry-laravel` - Error tracking (prompted during install)
 
 ## Configuration
@@ -120,14 +119,13 @@ php artisan statamic:eloquent:import-all
 
 ### 2.1. User Database Storage (Optional)
 
-To store users in the database instead of files, follow the [Statamic guide for storing users in a database](https://statamic.dev/tips/storing-users-in-a-database). The necessary configuration files are already included in the `export/` directory.
+To store users in the database instead of files, the necessary configuration files (User model, auth config, users config) are already included. Follow the [Statamic guide for storing users in a database](https://statamic.dev/tips/storing-users-in-a-database) for details.
 
 ```bash
-# Additional migration for user storage
+# Run additional migration for user storage
 php artisan migrate
 
-# Import user configuration
-# Files in export/ directory will be automatically processed
+# The configuration files will be processed with the import command above
 ```
 
 ### 3. Frontend Setup

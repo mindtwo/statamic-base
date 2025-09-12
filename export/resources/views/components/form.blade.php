@@ -61,6 +61,8 @@
 
                 {{ $slot ?? '' }}
 
+                {{-- Uncomment below if CAPTCHA module is enabled --}}
+                {{-- 
                 <div class="mt-8">
                     {!! Statamic::tag('captcha') !!}
 
@@ -72,6 +74,7 @@
                 @push('scripts')
                     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
                 @endpush
+                --}}
 
                 <div class="mt-8">
                     <button type="submit" class="flex" :disabled="submitting">
