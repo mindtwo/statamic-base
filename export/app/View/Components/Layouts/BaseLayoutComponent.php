@@ -154,15 +154,15 @@ abstract class BaseLayoutComponent extends Component
     protected function setupAvailableSites(): void
     {
         $this->availableSites = [];
-        
+
         foreach (Site::all() as $site) {
             $translatedUrl = $site->url();
-            
+
             // If current page exists, try to get translated URL
             if ($this->page && method_exists($this->page, 'existsIn') && $this->page->existsIn($site->handle())) {
                 $translatedUrl = $this->page->in($site->handle())->absoluteUrl();
             }
-            
+
             $this->availableSites[$site->handle()] = [
                 'name' => $site->name(),
                 'handle' => $site->handle(),
