@@ -24,10 +24,12 @@ dependencies_dev:
   laravel/envoy: ^2.10
 modules:
   storage:
-    prompt: 'What kind of content and data storage you choosed during Statamic installation prompt previously?'
+    prompt: 'What kind of content and data storage do you want to use?'
+    skip_option: false
+    default: file
     options:
       database:
-        label: 'Database'
+        label: 'Database storage (recommended for production)'
         dependencies:
           statamic/eloquent-driver: ^4.30
         export_paths:
@@ -36,8 +38,7 @@ modules:
           - config/statamic/users.php
           - app/Models/User.php
       file:
-        label: 'Flat Files'
-        default: true
+        label: 'Flat Files (simpler setup)'
   captcha:
     prompt: 'Do you want to include CAPTCHA (e.g. Turnstile) protection for forms?'
     dependencies:
