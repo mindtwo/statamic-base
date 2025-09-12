@@ -33,10 +33,10 @@ modules:
         dependencies:
           statamic/eloquent-driver: ^4.30
         export_paths:
-          - config/statamic/eloquent-driver.php
-          - config/auth.php
-          - config/statamic/users.php
-          - app/Models/User.php
+          - export/config/statamic/eloquent-driver.php
+          - export/config/auth.php
+          - export/config/statamic/users.php
+          - export/app/Models/User.php
       file:
         label: 'Flat Files'
         export_paths: []
