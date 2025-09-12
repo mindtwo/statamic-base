@@ -4,7 +4,6 @@ export_paths:
   - Envoy.config.php
   - app/DataTransferObjects
   - app/View/Components
-  - config/captcha.php
   - config/statamic/eloquent-driver.php
   - content
   - database/sync.sql
