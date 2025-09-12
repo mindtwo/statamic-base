@@ -29,6 +29,8 @@ php please starter-kit:install mindtwo/statamic-base
 - **Eloquent Driver**: Database storage for better performance
 - **Multilingual Setup**: German/English with proper SEO
 - **Content Structure**: Pre-configured collections and blueprints
+- **Navigation**: Dynamic menus and navigation trees
+- **Forms**: Ready-to-use contact forms with CAPTCHA (Cloudflare Turnstile) support
 - **Form Components**: Text, textarea, select, checkboxes, radio, toggle, files
 
 ## Dependencies
@@ -49,41 +51,93 @@ php please starter-kit:install mindtwo/statamic-base
 
 The starter kit includes:
 
-### Eloquent Storage
-- Collections entries, forms, assets, globals, navigation trees, taxonomies → Database
-- Users, blueprints, configurations → Files
+### Database-First Architecture
+
+This starter kit is prepared to use Statamic's **Eloquent Driver** for database storage instead of the traditional flat-file approach. While database usage is optional, it provides better performance, easier backups, and improved scalability for production environments when enabled.
+
+**Stored in Database:**
+- Collection entries (pages, articles, etc.)
+- Form submissions
+- Asset metadata
+- Global content
+- Navigation trees
+- Taxonomy terms
+
+**Stored as Files:**
+- User accounts and permissions
+- Content blueprints and fieldsets
+- Site configuration files
+- Templates and views
 
 ### Multilingual
 - German (`de`) as primary language
 - English (`en`) as secondary language
 - Language switcher with hreflang SEO tags
 
-### Development Tools
+### Development + AI Tools
 - Claude Code configuration (`.claude`, `CLAUDE.md`)
 - Junie setup (`.junie`)
-- Laravel Boost integration
-- Envoy deployment scripts
+- Laravel Boost integration 
+- Laravel Envoy deployment scripts
 
-## Usage
+## Setup Instructions
 
-After installation:
+### 1. Database Configuration (Optional but Recommended)
+
+This starter kit supports **Eloquent Driver** for database storage instead of flat files. For optimal performance, configure your database:
 
 ```bash
-# Setup environment
+# Copy environment file
 cp .env.example .env
-# Configure database settings
+```
 
-# Run migrations
+Edit `.env` with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+# Statamic Configuration
+STATAMIC_LICENSE_KEY=your_license_key
+STATAMIC_STACHE_WATCHER=true
+STATAMIC_STATIC_CACHING_STRATEGY=null
+
+# Optional: Captcha (Turnstile)
+CAPTCHA_SITEKEY=your_turnstile_sitekey
+CAPTCHA_SECRET=your_turnstile_secret
+```
+
+### 2. Database Migration (When Using Eloquent Driver)
+
+```bash
+# Run Statamic migrations for Eloquent driver
 php artisan migrate
 
-# Install frontend dependencies
+# Import starter content to database
+php artisan statamic:eloquent:import-all
+```
+
+### 3. Frontend Setup
+
+```bash
+# Install dependencies
 npm install
 
-# Development
+# Development with hot reload
 npm run dev
 
-# Production
+# Production build
 npm run build
+```
+
+### 4. Admin User
+
+```bash
+# Create your first admin user
+php artisan statamic:user:create
 ```
 
 ## Project Structure
