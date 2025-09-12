@@ -72,8 +72,6 @@ This starter kit is prepared to use Statamic's **[Eloquent Driver](https://githu
 - Language switcher with hreflang SEO tags
 
 ### Development + AI Tools
-- Claude Code configuration (`.claude`, `CLAUDE.md`)
-- Junie setup (`.junie`)
 - Laravel Boost integration 
 - Laravel Envoy deployment scripts
 
@@ -146,26 +144,6 @@ npm run build
 ```bash
 # Create your first admin user
 php artisan statamic:user:create
-```
-
-## Project Structure
-
-```
-app/
-├── DataTransferObjects/    # Spatie Data objects
-└── View/Components/        # Blade components
-content/                   # Collections & content
-lang/                     # Translations (de/en)
-resources/
-├── blueprints/           # Content structure
-├── fieldsets/            # Field configurations
-├── views/                # Templates
-├── css/                  # Stylesheets
-└── js/                   # JavaScript
-public/fonts/             # Typography assets
-config/
-├── captcha.php          # Captcha configuration
-└── statamic/eloquent-driver.php  # Database config
 ```
 
 ## License
