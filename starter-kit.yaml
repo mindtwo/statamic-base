@@ -4,6 +4,7 @@ export_paths:
   - Envoy.config.php
   - app/DataTransferObjects
   - app/View/Components
+  - config/statamic/cp.php
   - content
   - lang
   - package.json
@@ -33,10 +34,10 @@ modules:
         dependencies:
           statamic/eloquent-driver: ^4.30
         export_paths:
-          - export/config/statamic/eloquent-driver.php
-          - export/config/auth.php
-          - export/config/statamic/users.php
-          - export/app/Models/User.php
+          - config/statamic/eloquent-driver.php
+          - config/statamic/users.php
+          - config/auth.php
+          - app/Models/User.php
       file:
         label: 'Flat Files'
         export_paths: []
