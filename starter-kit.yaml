@@ -29,7 +29,7 @@ modules:
     default: file
     options:
       database:
-        label: 'Database storage (recommended for production)'
+        label: 'Database storage'
         dependencies:
           statamic/eloquent-driver: ^4.30
         export_paths:
@@ -38,7 +38,8 @@ modules:
           - config/statamic/users.php
           - app/Models/User.php
       file:
-        label: 'Flat Files (simpler setup)'
+        label: 'Flat Files'
+        export_paths: []
   captcha:
     prompt: 'Do you want to include CAPTCHA (e.g. Turnstile) protection for forms?'
     dependencies:
