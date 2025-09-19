@@ -7,7 +7,7 @@ export_paths:
   - app/Services
   - config/statamic/cp.php
   - config/statamic/system.php
-  - config/filesystem.php
+  - config/filesystems.php
   - content
   - lang
   - package.json
