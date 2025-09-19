@@ -34,11 +34,11 @@ php please starter-kit:install mindtwo/statamic-base
 
 ### Automatically Installed
 - `statamic/cms` - Statamic CMS core
-- `statamic/eloquent-driver` - Database storage
 - `spatie/laravel-data` - Data Transfer Objects
 - `laravel/envoy` - Deployment automation
 - `laravel/boost` - Development tools
 - `mindtwo/statamic-base` - This package (widgets & utilities)
+- `statamic/eloquent-driver` - Database storage (automatic if database mode desired)
 
 ### Optional
 - `aryehraber/statamic-captcha` - Form protection ([documentation](https://github.com/aryehraber/statamic-captcha))
@@ -100,15 +100,32 @@ CAPTCHA_SITEKEY=your_turnstile_sitekey
 CAPTCHA_SECRET=your_turnstile_secret
 ```
 
-### 2. Database Migration (When Using Eloquent Driver)
+### 2. Database Storage (Optional but Recommended)
+
+The starter kit is **ready to use with flat files** out of the box. For improved performance and scalability, we recommend using database storage:
 
 ```bash
-# Run Statamic migrations for Eloquent driver
+# Install Eloquent driver for database storage
+composer require statamic/eloquent-driver
+
+# Run Statamic migrations
 php artisan migrate
 
-# Import starter content to database
-php artisan statamic:eloquent:import-all
+# Import content configured for database storage
+php artisan statamic:eloquent:import-assets
+php artisan statamic:eloquent:import-blueprints
+php artisan statamic:eloquent:import-collection-trees
+php artisan statamic:eloquent:import-entries
+php artisan statamic:eloquent:import-forms
+php artisan statamic:eloquent:import-form-submissions
+php artisan statamic:eloquent:import-global-sets
+php artisan statamic:eloquent:import-navigation-trees
+php artisan statamic:eloquent:import-taxonomies
+php artisan statamic:eloquent:import-terms
+php artisan statamic:eloquent:import-tokens
 ```
+
+> **Note**: These commands import only content that is configured to use the Eloquent driver in `config/statamic/eloquent-driver.php`. Collections, navigations, and other items configured for file storage remain as files.
 
 ### 2.1. User Database Storage (Optional)
 

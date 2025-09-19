@@ -107,17 +107,24 @@ class StarterKitPostInstall
         $this->console->line('Next steps:');
         $this->console->line('1. Configure your .env file with database credentials');
 
-        if ($this->hasEloquentDriver()) {
-            $this->console->line('2. Run: <comment>php artisan migrate</comment>');
-            $this->console->line('3. Run: <comment>php artisan statamic:eloquent:import-all</comment>');
-            $this->console->line('4. Install frontend dependencies: <comment>npm install</comment>');
-            $this->console->line('5. Create admin user: <comment>php artisan statamic:user:create</comment>');
-        } else {
-            $this->console->line('2. Install frontend dependencies: <comment>npm install</comment>');
-            $this->console->line('3. Create admin user: <comment>php artisan statamic:user:create</comment>');
-        }
+        $this->console->line('2. <info>Optional but recommended:</info> Set up database storage');
+        $this->console->line('   Install Eloquent driver: <comment>composer require statamic/eloquent-driver</comment>');
+        $this->console->line('   Run: <comment>php artisan migrate</comment>');
+        $this->console->line('   Import configured content: <comment>php artisan statamic:eloquent:import-assets</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-blueprints</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-collection-trees</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-entries</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-forms</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-form-submissions</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-global-sets</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-navigation-trees</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-taxonomies</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-terms</comment>');
+        $this->console->line('   <comment>php artisan statamic:eloquent:import-tokens</comment>');
+        $this->console->line('3. Install frontend dependencies: <comment>npm install</comment>');
+        $this->console->line('4. Create admin user: <comment>php artisan statamic:user:create</comment>');
 
-        $this->console->line('6. Start development: <comment>npm run dev</comment>');
+        $this->console->line('5. Start development: <comment>npm run dev</comment>');
         $this->console->line('');
         $this->console->line('Happy coding! 🚀');
     }
