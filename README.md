@@ -95,9 +95,6 @@ DB_DATABASE=your_database
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 
-# Optional: Captcha (Turnstile)
-CAPTCHA_SITEKEY=your_turnstile_sitekey
-CAPTCHA_SECRET=your_turnstile_secret
 ```
 
 ### 2. Database Storage (Optional but Recommended)
@@ -105,9 +102,6 @@ CAPTCHA_SECRET=your_turnstile_secret
 The starter kit is **ready to use with flat files** out of the box. For improved performance and scalability, we recommend using database storage:
 
 ```bash
-# Install Eloquent driver for database storage
-composer require statamic/eloquent-driver
-
 # Run Statamic migrations
 php artisan migrate
 
@@ -127,16 +121,6 @@ php artisan statamic:eloquent:import-tokens
 
 > **Note**: These commands import only content that is configured to use the Eloquent driver in `config/statamic/eloquent-driver.php`. Collections, navigations, and other items configured for file storage remain as files.
 
-### 2.1. User Database Storage (Optional)
-
-To store users in the database instead of files, the necessary configuration files (User model, auth config, users config) are already included. Follow the [Statamic guide for storing users in a database](https://statamic.dev/tips/storing-users-in-a-database) for details.
-
-```bash
-# Run additional migration for user storage
-php artisan migrate
-
-# The configuration files will be processed with the import command above
-```
 
 ### 3. Frontend Setup
 

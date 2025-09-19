@@ -29,9 +29,9 @@ However, you will need to make sure your server or environment meets the followi
 - [Vite](https://vitejs.dev)
 
 ## Multilingual Setup
-This project supports three languages:
-- **English (Default)**: Primary language, available at root domain
-- **German**: Available at `/de/` path
+This project supports two languages:
+- **German (Default)**: Primary language, available at root domain
+- **English**: Available at `/en/` path
 
 ## How To Install
 This project utilizes [Composer](https://getcomposer.org/) & [NPM](https://www.npmjs.com/) to manage its dependencies. So, before using this project, make sure you have Composer & NPM installed on your machine or server.
@@ -49,8 +49,6 @@ After that, install the project by typing the following command inside the clone
 composer install
 npm install
 ```
-TODO: Place reminder to ensure labels bdescription etc. in cp will be placed in english with german translation in json file
-
 
 ### 1. Webserver Setup
 
@@ -133,8 +131,6 @@ vendor/bin/pint
 ```
 
 ## Deployment
-@TODO: Add deployment instructions for production
-
 The deployment process for this project is automated for the `Staging` environment. Here's how it works:
 
 - **Automatic Deployment to Staging Environment:**
@@ -142,11 +138,13 @@ The deployment process for this project is automated for the `Staging` environme
 
 This setup streamlines the deployment process, reducing the need for manual intervention and allowing for continuous integration and delivery practices.
 
+**Important:** When creating content in Statamic's Control Panel, ensure that labels and descriptions are written in English with German translations provided in the language JSON files (`lang/de.json`). This ensures proper multilingual support and maintainability.
+
 ## Project Information
 
 **Client:** CLIENT_NAME  
 **Developer:** mindtwo GmbH  
 **Technology Stack:** Laravel 12, Statamic CMS 5, Tailwind CSS 4, Alpine.js 3  
-**Features:** Multilingual (DE/EN/NL), Contact Forms, SEO Optimized, Performance Optimized
+**Features:** Multilingual (DE/EN), Contact Forms, SEO Optimized, Performance Optimized
 
 [![Back to the top](https://www.mindtwo.de/downloads/doodles/github/repository-footer.png)](#)

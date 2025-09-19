@@ -108,7 +108,6 @@ class StarterKitPostInstall
         $this->console->line('1. Configure your .env file with database credentials');
 
         $this->console->line('2. <info>Optional but recommended:</info> Set up database storage');
-        $this->console->line('   Install Eloquent driver: <comment>composer require statamic/eloquent-driver</comment>');
         $this->console->line('   Run: <comment>php artisan migrate</comment>');
         $this->console->line('   Import configured content: <comment>php artisan statamic:eloquent:import-assets</comment>');
         $this->console->line('   <comment>php artisan statamic:eloquent:import-blueprints</comment>');
