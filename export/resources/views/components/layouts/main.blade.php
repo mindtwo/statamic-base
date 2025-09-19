@@ -23,7 +23,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $metadata->page_title ?? $title }} ‹ {{ config('app.name') }}</title>
+    <title>{{ $metadata->page_title ?? $title }} ‹ {{ config('app.name') }} </title>
 
     @if (!empty($metadata->meta_robots ?? $robots))
         <meta name="robots" content="{{ $metadata->meta_robots ?? $robots }}">
@@ -53,12 +53,19 @@
         <meta property="og:site_name" content="{{ $metadata->og_site_name }}">
     @endif
 
+    @if(!empty($hreflangLinks))
+        @foreach($hreflangLinks as $link)
+            <link rel="alternate" hreflang="{{ $link['lang'] }}" href="{{ $link['url'] }}">
+        @endforeach
+        <link rel="alternate" hreflang="x-default" href="{{ $hreflangLinks[0]['url'] }}">
+    @endif
+
     <link rel="preload" href="/fonts/RoobertVF.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
         @font-face {
             font-family: "Roobert";
-            src: url("/fonts/RoobertVF.woff2") format("woff2");
+            src: url("/assets/fonts/RoobertVF.woff2") format("woff2");
             font-display: swap;
             font-weight: 400 700;
             font-style: normal;
@@ -79,7 +86,7 @@
     @stack('scripts')
     @stack('schema')
 </head>
-<body class="font-sans">
+<body class="font-sans text-base">
     <header class="bg-black" x-data="{ navOpen: false }">
         <x-container>
             <div class="flex justify-between items-center lg:h-full">
@@ -120,7 +127,7 @@
         </x-container>
     </header>
 
-    <main class="grid grid-cols-1 gap-y-24 py-24">
+    <main>
         {{ $slot }}
     </main>
 

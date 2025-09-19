@@ -1,10 +1,10 @@
-en:
-  name: English
-  url: /
-  locale: en_GB
-  lang: en
 de:
   name: Deutsch
-  url: /de/
+  url: /
   locale: de_DE
   lang: de
+en:
+  name: English
+  url: /en
+  locale: en_GB
+  lang: en

@@ -5,17 +5,34 @@ fields:
     field:
       collections:
         - pages
-        - references
-        - news
-        - jobs
       type: link
       display: Link
+      localizable: true
+      width: 50
+  -
+    handle: button_style
+    field:
+      options:
+        -
+          key: primary
+          value: Primary
+        -
+          key: contrast
+          value: Contrast
+        -
+          key: outline
+          value: 'Outline (primary)'
+        -
+          key: outline-contrast
+          value: 'Outline (contrast)'
+      default: primary
+      type: select
+      display: Style
       localizable: true
       width: 50
   -
     handle: button_label
     field:
       type: text
-      display: Beschriftung
+      display: Label
       localizable: true
-      width: 50

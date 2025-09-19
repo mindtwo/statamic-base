@@ -3,30 +3,23 @@
     'meta_robots' => 'noindex,nofollow'
 ])">
     <x-container>
-        <x-heading></x-heading>
-        <div class="flex justify-center flex-col h-full wysiwyg">
-            <h1 class="display text-white">
-                {{ trans('errors.404.heading') }}
-            </h1>
-            <p class="text-xl text-white">
-                {{ trans('errors.404.subtext') }}
+        <x-heading
+            element="h1"
+            :heading="trans('errors.404.heading')"
+        />
+
+        <x-wysiwyg class="text-lg" :content="trans('errors.404.subtext')"/>
+
+        @php
+            $siteOptions = \Statamic\Facades\GlobalSet::findByHandle('site_options')?->inCurrentSite();
+        @endphp
+
+        @if($siteOptions && $siteOptions->page_for_contact)
+            <p>
+                <a href="{{ $siteOptions->page_for_contact->url }}" class="btn btn-primary">
+                    {{ trans('errors.404.btn_contact_page_label') }}
+                </a>
             </p>
-
-            @php
-                $siteOptions = \Statamic\Facades\GlobalSet::findByHandle('site_options')?->inCurrentSite();
-            @endphp
-
-            @if($siteOptions && $siteOptions->page_for_contact)
-                <p>
-                    <a href="{{ $siteOptions->page_for_contact->url }}" class="btn btn-primary">
-                    <span>
-                        <span>
-                            {{ trans('errors.404.btn_label') }}
-                        </span>
-                    </span>
-                    </a>
-                </p>
-            @endif
-        </div>
+        @endif
     </x-container>
 </x-layouts.main>

@@ -3,14 +3,18 @@ export_paths:
   - Envoy.blade.php
   - Envoy.config.php
   - app/DataTransferObjects
-  - app/View/Components
+  - app/View
+  - app/Services
   - config/statamic/cp.php
+  - config/statamic/system.php
+  - config/filesystem.php
   - content
   - lang
   - package.json
   - public/favicon.ico
-  - public/fonts
+  - public/assets/fonts
   - public/robots.txt
+  - public/storage
   - resources
   - vite.config.js
   - README.md

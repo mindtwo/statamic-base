@@ -24,6 +24,7 @@ class MetaData extends Data
         public ?string $og_image = '',
         public ?string $og_site_name = '',
         public ?string $og_type = 'website',
+        public Page|Entry|Taxonomy|LocalizedTerm|null $originalPage = null,
     ) {}
 
     public static function fromPage(Page|Entry|Taxonomy|LocalizedTerm $page): self
@@ -79,6 +80,6 @@ class MetaData extends Data
             }
         }
 
-        return new self(...$data);
+        return new self(...$data, originalPage: $page);
     }
 }

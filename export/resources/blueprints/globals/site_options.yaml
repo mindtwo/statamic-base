@@ -1,6 +1,6 @@
 tabs:
   page_mapping:
-    display: 'Linking pages'
+    display: 'Page Mapping'
     sections:
       -
         fields:

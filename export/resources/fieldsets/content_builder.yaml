@@ -21,9 +21,17 @@ fields:
                 -
                   import: wysiwyg
                 -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
                   import: color
+                -
+                  import: spacing_options
             text_image:
-              display: 'Text & Bild'
+              display: 'Text + Image'
               instructions: 'Combination of image and text'
               fields:
                 -
@@ -33,22 +41,182 @@ fields:
                 -
                   import: image
                 -
-                  handle: reverse_order
+                  handle: spacer_feld
                   field:
-                    type: toggle
-                    display: 'Reverse order?'
+                    type: spacer
+                    display: 'Spacer Field'
                     localizable: false
-                    width: 50
                 -
-                  handle: center_content_vertically
+                  import: text_media_options
+                -
+                  import: spacing_options
+            image:
+              display: Image
+              instructions: 'A full size image'
+              fields:
+                -
+                  import: image
+                -
+                  handle: spacer_feld
                   field:
-                    type: toggle
-                    display: 'Center content vertically?'
+                    type: spacer
+                    display: 'Spacer Field'
                     localizable: false
-                    width: 50
+                -
+                  import: spacing_options
+            cards:
+              display: Cards
+              instructions: 'Teaser as card items'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  handle: cards
+                  field:
+                    mode: stacked
+                    type: grid
+                    display: Cards
+                    localizable: false
+                    fields:
+                      -
+                        import: subheading
+                      -
+                        import: wysiwyg_simple
+                -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
+                  import: spacing_options
+            hero:
+              display: Hero
+              instructions: 'Introduction element for a page'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  import: image
+                -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
+                  import: spacing_options
+            call_to_action:
+              display: 'Call to action'
+              instructions: 'Draws attention to button'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  import: button
+                -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
+                  import: spacing_options
         special_blocks:
           display: Special
           sets:
+            slider:
+              display: Slider
+              instructions: 'Slider for images or content items'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  handle: slides
+                  field:
+                    type: replicator
+                    display: Slides
+                    localizable: true
+                    collapse: true
+                    previews: false
+                    sets:
+                      slide_types:
+                        display: 'Slide Types'
+                        sets:
+                          image:
+                            display: Image
+                            fields:
+                              -
+                                import: image
+                              -
+                                handle: link
+                                field:
+                                  collections:
+                                    - pages
+                                  type: link
+                                  display: Link
+                                  localizable: true
+                          text_image:
+                            display: 'Text with Image'
+                            fields:
+                              -
+                                import: heading
+                              -
+                                import: wysiwyg
+                              -
+                                import: image
+                              -
+                                handle: link
+                                field:
+                                  collections:
+                                    - pages
+                                  type: link
+                                  display: Link
+                                  localizable: true
+                -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
+                  import: spacing_options
+            accordion:
+              display: Accordion
+              instructions: 'Collapsable content elements'
+              fields:
+                -
+                  import: heading
+                -
+                  import: wysiwyg
+                -
+                  handle: accordion
+                  field:
+                    type: grid
+                    display: Accordion
+                    localizable: false
+                    mode: stacked
+                    fields:
+                      -
+                        import: subheading
+                      -
+                        import: wysiwyg_simple
+                -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
+                  import: spacing_options
             form:
               display: Form
               instructions: 'Select and embed a form'
@@ -62,3 +230,11 @@ fields:
                     type: form
                     display: Form
                     localizable: false
+                -
+                  handle: spacer_feld
+                  field:
+                    type: spacer
+                    display: 'Spacer Field'
+                    localizable: false
+                -
+                  import: spacing_options

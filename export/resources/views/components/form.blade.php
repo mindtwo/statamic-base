@@ -1,4 +1,5 @@
 @props([
+    'class',
     'handle',
     'successMessage' => trans('form.success'),
 ])
@@ -7,7 +8,7 @@
     $form = Statamic::tag('form:' . $handle)->fetch();
 @endphp
 
-<div x-data="{ submitting: false, success: false, errors: [], error: null }" x-form x-cloak>
+<div class="{{ $class }}" x-data="{ submitting: false, success: false, errors: [], error: null }" x-form x-cloak>
     <div x-show="errors.length > 0" x-cloak class="bg-red-300 rounded-sm p-8 mb-8 wysiwyg">
         <p class="h5 text-red-900 leading-tight font-bold">{{ trans('form.error') }}</p>
         <ul>
@@ -17,8 +18,8 @@
         </ul>
     </div>
 
-    <div x-show="success" x-cloak class="flex items-center gap-x-8 bg-primary/50 rounded-sm p-8 mb-8">
-        <p class="h5 text-primary-dark leading-tight font-bold">
+    <div x-show="success" x-cloak class="flex items-center gap-x-8 bg-green-200 rounded-sm p-8 mb-8">
+        <p class="h5 text-green-600 leading-tight font-bold">
             {{ $successMessage }}
         </p>
     </div>
@@ -26,20 +27,20 @@
     <div x-show="!success" x-cloak>
         <p class="text-xs text-right mb-4">{{ trans('form.required_fields') }}</p>
 
-        <form action="{{ $form['attrs']['action'] }}" method="POST">
+        <form action="{{ $form['attrs']['action'] }}" method="POST" class="grid gap-y-12">
             @csrf
 
             @foreach($form['sections'] as $section)
                 <div>
                     <fieldset>
                         @if($section['display'])
-                            <legend class="text-fluid-h4 font-heading font-medium mb-4">
+                            <legend class="text-h4 font-heading font-medium mb-4">
                                 {{ __($section['display']) }}
                             </legend>
                         @endif
 
                         @if($section['instructions'])
-                            <p class="text-fluid-base text-secondary mb-6">
+                            <p class="mb-6">
                                 {{ $section['instructions'] }}
                             </p>
                         @endif
@@ -61,8 +62,6 @@
 
                 {{ $slot ?? '' }}
 
-                {{-- Uncomment below if CAPTCHA module is enabled --}}
-                {{-- 
                 <div class="mt-8">
                     {!! Statamic::tag('captcha') !!}
 
@@ -74,7 +73,6 @@
                 @push('scripts')
                     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
                 @endpush
-                --}}
 
                 <div class="mt-8">
                     <button type="submit" class="flex" :disabled="submitting">

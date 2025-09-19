@@ -24,6 +24,15 @@ fields:
       link_noopener: true
       type: bard
       display: Wysiwyg
-      localizable: false
+      localizable: true
       smart_typography: true
       word_count: true
+      sets:
+        blocks:
+          display: Blocks
+          sets:
+            button:
+              display: Button
+              fields:
+                -
+                  import: button

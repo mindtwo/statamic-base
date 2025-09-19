@@ -1,0 +1,16 @@
+title: 'Wysiwyg (simple)'
+fields:
+  -
+    handle: wysiwyg
+    field:
+      buttons:
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - anchor
+      word_count: true
+      remove_empty_nodes: true
+      type: bard
+      display: Wysiwyg
+      localizable: true

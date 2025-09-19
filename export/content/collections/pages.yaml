@@ -1,12 +1,11 @@
 title: Pages
 sites:
-  - en
   - de
-propagate: false
+  - en
+propagate: true
 template: default
-layout: components/layouts/main
+layout: layout
 revisions: false
-title_format: '{{ title }}'
 route: '{parent_uri}/{slug}'
 sort_dir: asc
 preview_targets:
@@ -16,5 +15,4 @@ preview_targets:
     refresh: true
 structure:
   root: true
-  max_depth: 2
   slugs: true

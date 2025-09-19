@@ -21,7 +21,6 @@
             @if($block->image)
                 <x-image
                     :assets="[$block->image]"
-                    :loading="$block->lazy_loading ?? true"
                     :simple-markup="false"
                     class="w-full h-auto"
                 />

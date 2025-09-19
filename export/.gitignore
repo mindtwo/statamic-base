@@ -20,6 +20,7 @@
 /public/vendor/statamic
 /storage/*.key
 /storage/pail
+/storage/forms
 /vendor
 Homestead.json
 Homestead.yaml

@@ -6,8 +6,8 @@
     />
 
     @if($block->form)
-        <div class="col-span-12 md:col-span-5">
-            <x-form handle="{{ $block->form->handle }}"></x-form>
+        <div class="grid grid-cols-12">
+            <x-form handle="{{ $block->form->handle }}" class="col-span-12 xl:col-span-8"></x-form>
         </div>
     @endif
 </x-container>

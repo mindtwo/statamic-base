@@ -10,12 +10,12 @@
 @if(($field['visibility'] ?? 'visible') !== 'hidden')
     <x-form.field-wrapper :field="$field">
         <fieldset>
-            <legend class="mb-2 {{ isset($field['hide_display']) ? 'sr-only' : 'block' }}">
+            <legend class="mb-2 font-bold {{ isset($field['hide_display']) ? 'sr-only' : 'block' }}">
                 {{ __($field['display']) }}@if($isRequired)*@endif
             </legend>
 
             @if(!empty($field['instructions']) && ($field['instructions_position'] ?? 'below') === 'above')
-                <p class="text-sm text-current mb-1">
+                <p class="text-current mb-1">
                     {{ $field['instructions'] }}
                 </p>
             @endif
@@ -28,13 +28,13 @@
                 :aria-describedby="fieldError ? '{{ $fieldId }}-error' : '{{ $fieldId }}-instructions'"
             >
                 @foreach($field['options'] ?? [] as $optionValue => $label)
-                    <div class="flex gap-2 items-center">
+                    <div class="flex gap-4 items-center">
                         <input
                             type="radio"
                             id="{{ $fieldId }}_{{ $loop->index }}"
                             name="{{ $field['handle'] }}"
                             value="{{ $optionValue }}"
-                            class="form-radio h-6 w-6 border-black focus:ring-2 focus:ring-primary-dark focus:ring-offset-2 focus:border-primary-dark"
+                            class="form-radio h-6 w-6 p-1 mt-0.5 border-black focus:ring-2 focus:ring-primary-dark focus:ring-offset-2 focus:border-primary-dark"
                             :class="{ 'border-red-500': fieldError }"
                             {{ $value == $optionValue ? 'checked' : '' }}
                             @if($isRequired) required @endif
@@ -42,7 +42,7 @@
                             :aria-invalid="fieldError ? 'true' : 'false'"
                             :aria-describedby="fieldError ? '{{ $fieldId }}-error' : '{{ $fieldId }}-instructions'"
                         >
-                        <label for="{{ $fieldId }}_{{ $loop->index }}" class="text-sm">
+                        <label for="{{ $fieldId }}_{{ $loop->index }}">
                             {{ __($label) }}
                         </label>
                     </div>
@@ -53,13 +53,13 @@
                 x-show="fieldError"
                 x-text="fieldError"
                 x-cloak
-                class="text-red-500 text-sm mt-1"
+                class="text-red-500 mt-1"
                 id="{{ $fieldId }}-error"
                 role="alert"
             ></p>
 
             @if(!empty($field['instructions']) && ($field['instructions_position'] ?? 'below') !== 'above')
-                <p class="text-sm text-current mt-1">
+                <p class="text-current mt-1">
                     {{ $field['instructions'] }}
                 </p>
             @endif

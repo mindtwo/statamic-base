@@ -2,7 +2,6 @@
     'assets' => null,
     'alt' => isset($image['alt']) ? $image['alt']->value() : '',
     'class' => '',
-    'loading' => false,
     'simpleMarkup' => false
 ])
 
@@ -12,7 +11,7 @@
              alt="{{ $alt }}"
              width="{{ $image['width'] ?? '' }}"
              height="{{ $image['height'] ?? '' }}"
-             loading="{{ $loading ? 'lazy' : 'eager' }}"
+             loading="{{ $image['loading'] ? 'lazy' : 'eager' }}"
              class="{{ $class }}">
     @endforeach
 @else
@@ -24,7 +23,7 @@
                          alt="{{ $alt }}"
                          width="{{ $image['width'] ?? '' }}"
                          height="{{ $image['height'] ?? '' }}"
-                         loading="{{ $loading ? 'lazy' : 'eager' }}"
+                         loading="{{ $image['loading'] ? 'lazy' : 'eager' }}"
                          class="{{ $class }}">
                 </picture>
 

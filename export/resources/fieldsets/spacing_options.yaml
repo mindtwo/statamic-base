@@ -1,0 +1,34 @@
+title: 'Spacing Options'
+fields:
+  -
+    handle: spacing_top
+    field:
+      options:
+        -
+          key: default
+          value: Default
+        -
+          key: none
+          value: 'No Spacing'
+      searchable: false
+      default: default
+      type: select
+      display: 'Spacing top'
+      localizable: true
+      width: 50
+  -
+    handle: spacing_bottom
+    field:
+      options:
+        -
+          key: default
+          value: Default
+        -
+          key: none
+          value: 'No Spacing'
+      searchable: false
+      default: default
+      type: select
+      display: 'Spacing bottom'
+      localizable: true
+      width: 50

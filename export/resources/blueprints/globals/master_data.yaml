@@ -1,6 +1,6 @@
 tabs:
   main:
-    display: Hauptteil
+    display: Main
     sections:
       -
         fields:

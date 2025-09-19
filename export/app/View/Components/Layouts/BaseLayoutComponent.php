@@ -3,6 +3,7 @@
 namespace App\View\Components\Layouts;
 
 use App\DataTransferObjects\MetaData;
+use App\Services\MultilingualService;
 use Illuminate\View\Component;
 use Statamic\Facades\GlobalSet;
 use Statamic\Facades\Site;
@@ -15,7 +16,7 @@ abstract class BaseLayoutComponent extends Component
     /**
      * The current site.
      */
-    public SiteModel $site;
+    public ?SiteModel $site;
 
     /**
      * The site metadata global variables.
@@ -38,19 +39,19 @@ abstract class BaseLayoutComponent extends Component
     public string $homepageUrl = '';
 
     /**
-     * The handle of the target site for language switching.
-     */
-    public string $targetSite = '';
-
-    /**
-     * The URL to the translated version of the current page.
-     */
-    public string $translatedPage = '';
-
-    /**
      * Available sites for language switching.
      */
-    public array $availableSites = [];
+    public mixed $availableSites = null;
+
+    /**
+     * Hreflang links for SEO.
+     */
+    public array $hreflangLinks = [];
+
+    /**
+     * The multilingual service instance.
+     */
+    protected MultilingualService $multilingualService;
 
     /**
      * The main navigation items.
@@ -61,11 +62,6 @@ abstract class BaseLayoutComponent extends Component
      * The footer navigation items.
      */
     public mixed $footerNav = null;
-
-    /**
-     * The meta navigation items.
-     */
-    public mixed $metaNav = null;
 
     /**
      * The current page object.
@@ -86,10 +82,13 @@ abstract class BaseLayoutComponent extends Component
         public string $canonical = '',
         public string $robots = 'index, follow',
         public ?MetaData $metadata = null,
+        mixed $page = null,
     ) {
+        $this->page = $page;
+        $this->multilingualService = app(MultilingualService::class);
         $this->initializeSiteData();
         $this->loadNavigationData();
-        $this->setupLanguageToggle();
+        $this->setupLanguageData();
     }
 
     /**
@@ -109,6 +108,10 @@ abstract class BaseLayoutComponent extends Component
      */
     protected function detectIfHomepage(): bool
     {
+        if (! $this->site) {
+            return false;
+        }
+
         $handle = $this->site->handle();
 
         return ($handle === 'default' || $handle === 'de') && request()->is('/');
@@ -121,65 +124,28 @@ abstract class BaseLayoutComponent extends Component
     {
         $this->primaryNav = Statamic::tag('nav:primary_navigation')->fetch();
         $this->footerNav = Statamic::tag('nav:footer_navigation')->fetch();
-        $this->metaNav = Statamic::tag('nav:meta_navigation')->fetch();
     }
 
-    /**
-     * Setup language toggle functionality.
-     */
-    protected function setupLanguageToggle(): void
+    protected function setupLanguageData(): void
     {
-        $this->homepageUrl = $this->site->url();
-        $this->targetSite = $this->site->handle() === 'de' ? 'en' : 'de';
-        $targetHomepageUrl = Site::get($this->targetSite)->url();
+        // Get current page from Statamic's view context if not passed
+        if (! $this->page) {
+            $uri = request()->path() ?: '/';
+            $slug = $uri === '/' ? 'home' : basename($uri);
 
-        // Set default translated page URL to target site homepage
-        $this->translatedPage = $targetHomepageUrl;
-
-        // Get current page from request
-        $this->page = request()->get('page');
-
-        // Update translated page URL if page exists in target site
-        if ($this->hasTranslation()) {
-            $this->translatedPage = $this->page->in($this->targetSite)->absoluteUrl();
-        }
-
-        // Setup available sites for language menu
-        $this->setupAvailableSites();
-    }
-
-    /**
-     * Setup available sites data for language switching.
-     */
-    protected function setupAvailableSites(): void
-    {
-        $this->availableSites = [];
-
-        foreach (Site::all() as $site) {
-            $translatedUrl = $site->url();
-
-            // If current page exists, try to get translated URL
-            if ($this->page && method_exists($this->page, 'existsIn') && $this->page->existsIn($site->handle())) {
-                $translatedUrl = $this->page->in($site->handle())->absoluteUrl();
+            $collection = \Statamic\Facades\Collection::findByHandle('pages');
+            if ($collection) {
+                $this->page = $collection->queryEntries()
+                    ->where('site', $this->site->handle())
+                    ->where('slug', $slug)
+                    ->first();
             }
-
-            $this->availableSites[$site->handle()] = [
-                'name' => $site->name(),
-                'handle' => $site->handle(),
-                'locale' => $site->locale(),
-                'url' => $translatedUrl,
-            ];
         }
-    }
 
-    /**
-     * Check if the current page has a translation in the target site.
-     */
-    protected function hasTranslation(): bool
-    {
-        return $this->page
-            && is_object($this->page)
-            && method_exists($this->page, 'existsIn')
-            && $this->page->existsIn($this->targetSite);
+        // Use page from metadata if available, otherwise use passed page
+        $currentPage = $this->metadata?->originalPage ?? $this->page;
+
+        $this->availableSites = $this->multilingualService->getAvailableSites($currentPage);
+        $this->hreflangLinks = $this->multilingualService->getHreflangLinks($currentPage);
     }
 }

@@ -37,17 +37,17 @@
     x-init="updateFieldError"
     x-effect="updateFieldError"
 >
-    <label for="{{ $fieldId }}" class="text-fluid-lg mb-1 block">
+    <label for="{{ $fieldId }}" class="mb-1 block">
         {{ __($field['display']) ?? '' }}@if($isRequired)*@endif
     </label>
 
     @if(!empty($field['instructions']) && ($field['instructions_position'] ?? 'below') === 'above')
-        <p class="text-sm text-current mb-2">{{ $field['instructions'] }}</p>
+        <p class="text-current mb-2">{{ $field['instructions'] }}</p>
     @endif
 
     <input
         type="file"
-        class="text-fluid-lg w-full file:mr-4 file:py-2 file:px-4 file:rounded-xs file:border-0 file:text-sm file:bg-secondary  hover:file:bg-primary hover:file:text-white"
+        class="w-full file:mr-4 file:py-2 file:px-4 file:rounded-xs file:border-0 file:bg-secondary  hover:file:bg-primary hover:file:text-white"
         :class="{ 'border-red-500': fieldError }"
         name="{{ $field['handle'] }}{{ $maxFiles > 1 ? '[]' : '' }}"
         id="{{ $fieldId }}"
@@ -66,13 +66,13 @@
     @endphp
 
     @if($rules)
-        <p class="text-sm text-current mt-1">{{ $rules }}</p>
+        <p class="text-current mt-1">{{ $rules }}</p>
     @endif
 
-    <p x-show="fieldError" x-text="fieldError" x-cloak class="text-red-500 text-sm mt-1" id="{{ $fieldId }}-error" role="alert"></p>
+    <p x-show="fieldError" x-text="fieldError" x-cloak class="text-red-500 mt-1" id="{{ $fieldId }}-error" role="alert"></p>
 
     @if(!empty($field['instructions']) && ($field['instructions_position'] ?? 'below') !== 'above')
-        <p id="{{ $fieldId }}-instructions" class="text-sm text-current mt-1">{{ $field['instructions'] }}</p>
+        <p id="{{ $fieldId }}-instructions" class="text-current mt-1">{{ $field['instructions'] }}</p>
     @endif
 </div>
 @endif

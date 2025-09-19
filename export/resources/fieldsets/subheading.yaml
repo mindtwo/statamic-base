@@ -1,0 +1,33 @@
+title: Subheading
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      localizable: true
+      width: 66
+  -
+    handle: element
+    field:
+      options:
+        -
+          key: h2
+          value: h2
+        -
+          key: h3
+          value: h3
+        -
+          key: h4
+          value: h4
+        -
+          key: h5
+          value: h5
+        -
+          key: h6
+          value: h6
+      default: h3
+      type: select
+      display: 'HTML Element'
+      localizable: true
+      width: 33

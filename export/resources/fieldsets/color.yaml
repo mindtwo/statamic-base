@@ -9,4 +9,4 @@ fields:
       allow_any: false
       type: color
       display: 'Background color'
-      localizable: false
+      localizable: true

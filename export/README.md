@@ -49,6 +49,8 @@ After that, install the project by typing the following command inside the clone
 composer install
 npm install
 ```
+TODO: Place reminder to ensure labels bdescription etc. in cp will be placed in english with german translation in json file
+
 
 ### 1. Webserver Setup
 
