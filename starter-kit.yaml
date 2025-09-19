@@ -14,7 +14,6 @@ export_paths:
   - public/favicon.ico
   - public/assets/fonts
   - public/robots.txt
-  - public/storage
   - resources
   - vite.config.js
   - README.md
