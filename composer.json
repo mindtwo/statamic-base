@@ -1,16 +1,13 @@
 {
     "name": "mindtwo/statamic-base",
-    "type": "statamic-starter-kit",
-    "description": "mindtwo's base Statamic starter kit with Tailwind 4, Alpine.js, form components, and multilingual support",
+    "type": "library",
+    "description": "Dashboard widgets and utilities for Statamic CMS",
     "keywords": [
         "statamic",
         "cms",
         "laravel",
-        "tailwindcss",
-        "alpine.js",
-        "forms",
-        "multilingual",
-        "starter-kit"
+        "widgets",
+        "dashboard"
     ],
     "homepage": "https://www.mindtwo.de",
     "license": "MIT",
@@ -23,8 +20,8 @@
     ],
     "extra": {
         "statamic": {
-            "name": "mindtwo Base Starter Kit",
-            "description": "Professional Statamic starter kit with modern frontend stack, comprehensive form components, and enterprise-ready configuration"
+            "name": "mindtwo Base Addon",
+            "description": "Dashboard widgets and utilities for enhanced Statamic administration"
         }
     }
 }

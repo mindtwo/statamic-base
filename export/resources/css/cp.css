@@ -1,5 +1,0 @@
-@reference "tailwindcss";
-
-.publish-field.spacer-fieldtype {
-    @apply !py-0;
-}
